@@ -14,6 +14,10 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
 import { AuthService } from './auth/auth.service';
+import { TrainingComponent } from './training/training.component';
+import { CurrentTrainingComponent } from './training/current-training/current-training.component';
+import { NewTrainingComponent } from './training/new-training/new-training.component';
+import { PastTrainingsComponent } from './training/past-trainings/past-trainings.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { AuthService } from './auth/auth.service';
     LoginComponent,
     WelcomeComponent,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    TrainingComponent,
+    CurrentTrainingComponent,
+    NewTrainingComponent,
+    PastTrainingsComponent
   ],
   imports: [
     BrowserModule,
