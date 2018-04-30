@@ -16,7 +16,7 @@ export class TrainingService {
   private runningExercise: Exercise;
   private exercises: Exercise[] = [];
 
-  private firebaseSubscriptions: Subscription[];
+  private firebaseSubscriptions: Subscription[] = [];
 
   constructor(private db: AngularFirestore) { }
 

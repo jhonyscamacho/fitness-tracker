@@ -17,53 +17,51 @@ export class AuthService {
     private router: Router,
     private afAuth: AngularFireAuth,
     private trainingService: TrainingService
-  ) {}
+  ) { }
+
+  initAuthListener() {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.isAuthenticated = true;
+        this.authChange.next(true);
+        // This is the page to where
+        // the application will send the user after login.
+        this.router.navigate(['/training']);
+      } else {
+        this.trainingService.cancelSubscriptions();
+        this.authChange.next(false);
+        this.router.navigate(['/login']);
+        this.isAuthenticated = false;
+      }
+    });
+  }
 
   registerUser(authData: AuthData) {
-    this.afAuth.auth.createUserWithEmailAndPassword(
-      authData.email,
-      authData.password
-    ).then(result => {
-      console.log(result);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    this.afAuth.auth
+      .createUserWithEmailAndPassword(authData.email, authData.password)
+      .then(result => {
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   login(authData: AuthData) {
-    console.log(authData.email);
-    console.log(authData.password);
-    this.afAuth.auth.signInWithEmailAndPassword(
-      authData.email,
-      authData.password
-    ).then(result => {
-      console.log(result);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-
-    this.authSuccessfuly();
+    this.afAuth.auth
+      .signInWithEmailAndPassword(authData.email, authData.password)
+      .then(result => {
+        console.log(result);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   logout() {
-    this.trainingService.cancelSubscriptions();
     this.afAuth.auth.signOut();
-    this.authChange.next(false);
-    this.router.navigate(['/login']);
-    this.isAuthenticated = false;
   }
 
   isAuth() {
     return this.isAuthenticated;
-  }
-
-  private authSuccessfuly() {
-    this.isAuthenticated = true;
-    this.authChange.next(true);
-    // This is the page to where
-    // the application will send the user after login.
-    this.router.navigate(['/training']);
   }
 }
