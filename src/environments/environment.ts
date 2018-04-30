@@ -4,5 +4,19 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // Firebase configuration example;
+  // Open /src/environments/environment.ts and add your Firebase configuration;
+  // To find the environment variables do the following:
+  // 1 - Access your Firebase Account
+  // 2 - Click in 'Project Overwiew'
+  // 3 - Click in 'Add Firebase to your webapp'
+  firebase: {
+    apiKey: '<your-key>',
+    authDomain: '<your-project-authdomain>',
+    databaseURL: '<your-database-URL>',
+    projectId: '<your-project-id>',
+    storageBucket: '<your-storage-bucket>',
+    messagingSenderId: '<your-messaging-sender-id>'
+  }
 };

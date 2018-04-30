@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
+## Add Firebase config to environments variable
+
+To find the environment variables do the following:
+
+1. Access your Firebase Account;
+2. Click in 'Project Overwiew';
+3. Click in 'Add Firebase to your webapp';
+
+Open /src/environments/environment.ts and add your Firebase configuration;
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
